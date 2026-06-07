@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Plataforma educacional de Geografia com quiz, games, ranking e notícias geopolíticas.">
+    <title>GeoMaster 2026 - Plataforma Educacional</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <header role="banner" class="site-header">
+        <div class="container header-inner">
+            <a class="logo" href="#home">🌍 GeoMaster 2026</a>
+            <button class="menu-toggle" aria-controls="main-navigation" aria-expanded="false" aria-label="Abrir menu">
+                <span class="hamburger"></span>
+            </button>
+            <nav id="main-navigation" class="main-nav" role="navigation" aria-label="Menu Principal">
+                <ul class="nav-links">
+                    <li><a href="#conteudos">Conteúdos</a></li>
+                    <li><a href="#quiz">Quiz</a></li>
+                    <li><a href="#ranking">Ranking</a></li>
+                    <li><a href="#noticias">Notícias</a></li>
+                    <li><a href="#extras">Extras</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="user-points" aria-live="polite">Pontos: <span id="score">0</span> 🏆</div>
+        </div>
+    </header>
+
+    <main role="main">
+        <section id="home" class="hero section">
+            <div class="container hero-grid">
+                <div>
+                    <p class="eyebrow">Aprenda Geografia com jogos, quizzes e notícias reais</p>
+                    <h1>GeoMaster 2026<br><span>Educação geográfica moderna e acessível</span></h1>
+                    <p>Desenvolva competências com atividades interativas, certificações digitais e conteúdo atualizado em tempo real.</p>
+                    <div class="hero-actions">
+                        <a class="btn" href="#quiz">Fazer Quiz</a>
+                        <a class="btn btn-secondary" href="#noticias">Ver Notícias</a>
+                    </div>
+                </div>
+                <div class="hero-card" aria-hidden="true">
+                    <p>Quiz do dia:</p>
+                    <strong>Qual linha imaginária divide a Terra em Hemisfério Norte e Sul?</strong>
+                    <span class="hero-tag">Linha do Equador</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="conteudos" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>📚 Conteúdos Pedagógicos</h2>
+                    <p>Organize o estudo por ano e revise a geografia do Brasil e do planeta.</p>
+                </div>
+                <div class="tabs" role="tablist" aria-label="Escolha o ano escolar">
+                    <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="ano1" id="tab-ano1" onclick="showTab('ano1')">1º Ano</button>
+                    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="ano2" id="tab-ano2" onclick="showTab('ano2')">2º Ano</button>
+                    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="ano3" id="tab-ano3" onclick="showTab('ano3')">3º Ano</button>
+                </div>
+                <div class="tab-content active" id="ano1" role="tabpanel" aria-labelledby="tab-ano1">
+                    <h3>Geografia Geral: Cartografia e Relevo</h3>
+                    <p>Explore mapas mentais e conceitos fundamentais de coordenadas geográficas.</p>
+                    <a class="btn" href="#noticias">Ver estudos do clima</a>
+                </div>
+                <div class="tab-content" id="ano2" role="tabpanel" aria-labelledby="tab-ano2">
+                    <h3>População e Urbanização</h3>
+                    <p>Estude movimentos migratórios, densidade demográfica e regiões metropolitanas.</p>
+                    <a class="btn" href="#ranking">Ver atividades de engajamento</a>
+                </div>
+                <div class="tab-content" id="ano3" role="tabpanel" aria-labelledby="tab-ano3">
+                    <h3>Geopolítica e Sustentabilidade</h3>
+                    <p>Análise de acordos internacionais, recursos naturais e desafios ambientais.</p>
+                    <a class="btn" href="#extras">Conhecer curiosidades</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="quiz" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>🧠 Quiz Interativo</h2>
+                    <p>Responda, aprenda e ganhe pontos automaticamente.</p>
+                </div>
+                <div id="quiz-container" class="quiz-card" aria-live="polite">
+                    <p class="quiz-question" id="question">Carregando questionário...</p>
+                    <div class="options" id="options"></div>
+                    <p id="feedback" class="quiz-feedback" aria-live="assertive"></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="ranking" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>🏆 Ranking e Disputas</h2>
+                    <p>Veja os melhores alunos e acompanhe sua evolução por pontos.</p>
+                </div>
+                <ol id="leaderboard" class="leaderboard-list" aria-label="Ranking de pontuação"></ol>
+                <button onclick="generateCertificate()" class="btn btn-secondary">🎓 Gerar Certificado Digital</button>
+            </div>
+        </section>
+
+        <section id="noticias" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>📰 Notícias Geopolíticas</h2>
+                    <p>Atualizações reais para conectar a aprendizagem ao mundo.</p>
+                </div>
+                <div id="news-container" class="news-grid">Carregando notícias...</div>
+            </div>
+        </section>
+
+        <section id="extras" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>🎬 Extras</h2>
+                    <p>Curiosidades, vídeos e gamificação para manter o estudo envolvente.</p>
+                </div>
+                <div class="media-grid">
+                    <article class="card">
+                        <h3>Curiosidade</h3>
+                        <p>A Fossa das Marianas atinge cerca de 11.034 metros de profundidade.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Dica Rápida</h3>
+                        <p>O pico mais alto do Brasil é o Pico da Neblina, com 2.994 metros.</p>
+                    </article>
+                    <article class="card">
+                        <h3>Bônus</h3>
+                        <p>Novos acordos comerciais no Pacífico redefinem rotas de exportação de minerais raros.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>📬 Contato e Feedback</h2>
+                    <p>Envie sua dúvida ou sugestão para melhorar a plataforma.</p>
+                </div>
+                <form id="feedback-form" class="feedback-form" onsubmit="submitFeedback(event)">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" name="name" required>
+                    <label for="message">Mensagem</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                    <button type="submit" class="btn">Enviar Feedback</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 GeoMaster Educational Platform. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/quiz.js"></script>
+    <script src="js/gamification.js"></script>
+    <script src="js/api-integrations.js"></script>
+    <script src="js/certificate.js"></script>
+    <script src="js/analytics.js"></script>
+</body>
+</html>

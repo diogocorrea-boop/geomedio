@@ -1,0 +1,9 @@
+{
+    "name": "GeoMaster 2026",
+    "short_name": "GeoMaster",
+    "start_url": "./",
+    "display": "standalone",
+    "background_color": "#E6F2FF",
+    "theme_color": "#003366",
+    "description": "Plataforma educacional de Geografia com quizzes, notícias e certificação digital."
+}
