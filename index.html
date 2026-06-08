@@ -6,6 +6,7 @@
     <meta name="description" content="Plataforma educacional de Geografia com quiz, games, ranking e notícias geopolíticas.">
     <title>GeoMaster 2026 - Plataforma Educacional</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/conteudo-styles.css">
     <link rel="manifest" href="manifest.json">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,19 +66,13 @@
                     <button class="tab-btn" role="tab" aria-selected="false" aria-controls="ano3" id="tab-ano3" onclick="showTab('ano3')">3º Ano</button>
                 </div>
                 <div class="tab-content active" id="ano1" role="tabpanel" aria-labelledby="tab-ano1">
-                    <h3>Geografia Geral: Cartografia e Relevo</h3>
-                    <p>Explore mapas mentais e conceitos fundamentais de coordenadas geográficas.</p>
-                    <a class="btn" href="#noticias">Ver estudos do clima</a>
+                    <!-- Conteúdo renderizado dinamicamente -->
                 </div>
                 <div class="tab-content" id="ano2" role="tabpanel" aria-labelledby="tab-ano2">
-                    <h3>População e Urbanização</h3>
-                    <p>Estude movimentos migratórios, densidade demográfica e regiões metropolitanas.</p>
-                    <a class="btn" href="#ranking">Ver atividades de engajamento</a>
+                    <!-- Conteúdo renderizado dinamicamente -->
                 </div>
                 <div class="tab-content" id="ano3" role="tabpanel" aria-labelledby="tab-ano3">
-                    <h3>Geopolítica e Sustentabilidade</h3>
-                    <p>Análise de acordos internacionais, recursos naturais e desafios ambientais.</p>
-                    <a class="btn" href="#extras">Conhecer curiosidades</a>
+                    <!-- Conteúdo renderizado dinamicamente -->
                 </div>
             </div>
         </section>
@@ -88,10 +83,16 @@
                     <h2>🧠 Quiz Interativo</h2>
                     <p>Responda, aprenda e ganhe pontos automaticamente.</p>
                 </div>
+                <div class="quiz-selector" style="margin-bottom: 2rem;">
+                    <p style="margin-bottom: 1rem;">Escolha o ano para começar o quiz:</p>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <button class="btn" onclick="iniciarQuizAno('ano1')">Quiz 1º Ano</button>
+                        <button class="btn" onclick="iniciarQuizAno('ano2')">Quiz 2º Ano</button>
+                        <button class="btn" onclick="iniciarQuizAno('ano3')">Quiz 3º Ano</button>
+                    </div>
+                </div>
                 <div id="quiz-container" class="quiz-card" aria-live="polite">
-                    <p class="quiz-question" id="question">Carregando questionário...</p>
-                    <div class="options" id="options"></div>
-                    <p id="feedback" class="quiz-feedback" aria-live="assertive"></p>
+                    <p class="quiz-question" id="question">Selecione um ano acima para começar</p>
                 </div>
             </div>
         </section>
@@ -163,6 +164,8 @@
         </div>
     </footer>
 
+    <script src="js/conteudo.js"></script>
+    <script src="js/conteudo-renderer.js"></script>
     <script src="js/main.js"></script>
     <script src="js/quiz.js"></script>
     <script src="js/gamification.js"></script>
